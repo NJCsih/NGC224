@@ -22,4 +22,5 @@ qmk flash -kb ngc224 -km default -c -bl avrdude-split-left
 
 This handles the eeprom flashing as well, and works with the atmega24U chips.
 
-
+Current "default" layout:
+![layout](https://github.com/NJCsih/NGC224/blob/main/layout.png?raw=true)
