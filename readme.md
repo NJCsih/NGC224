@@ -19,7 +19,7 @@ I just flash with qmk on the unix command line with:
 qmk flash -kb ngc224 -km default -c -bl avrdude-split-left
 
 # Plug in right side
-qmk flash -kb ngc224 -km default -c -bl avrdude-split-left
+qmk flash -kb ngc224 -km default -c -bl avrdude-split-right
 ```
 
 This handles the eeprom flashing as well, and works with the atmega24U chips.
@@ -30,10 +30,9 @@ I'd like to include a nix flake for the qmk versioning soon, mostly just so that
 
 The layout I use is based on the colemak-dh layout, everything except the letters is custom.
 
-Subject to change:
-- Weird x,c,d,v,z in left corner, not perfect
-- mouse not using vim binds for up/down
-- find something better to do with volume buttons? idk
+I've gone down to 34 buttons, so there's just kinda 14 extra ones hanging out on my keyboard now :p
+
+I do use homerow mods now. From center out they go ctrl, shift, alt, super. The outer thumb buttons are escape and enter when tapped, and num and fn layers when held.
 
 Current "default" layout:
 ![layout](https://github.com/NJCsih/NGC224/blob/main/layout.png?raw=true)
