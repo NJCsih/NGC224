@@ -1,12 +1,9 @@
-# MCU name
-MCU = atmega32u4
-
-# Bootloader selection
-BOOTLOADER = atmel-dfu
-
 # Build Options
 #   change yes to no to disable
 #
+
+SERIAL_DRIVER = usart
+SERIAL_DRIVER = vendor
 
 SPLIT_KEYBOARD = yes
 UNICODE_ENABLE = yes
