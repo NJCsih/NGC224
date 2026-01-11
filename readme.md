@@ -1,45 +1,44 @@
-# NGC224
+# NGC224 | MK4
 
-A small 40% pcb-only fully split ortho, only supporting kialh choc switches.
+A 36-key pcb-only fully-split column-staggered keyboard
 
-If there will be a V2, it will likely add mx switch support, or just to make it hotswappable.
+- Full split, using full-duplex usart over TRRS
+- Uses Elite-Pi microcontroller, Arduino Pro Micro back compatible
+- Kailh Choc switches, hot-swap mounts, and through-hole diodes
+- Gerbers and source kicad files available
+- CC-BY-NC-SA Licensed
 
-* Keyboard Maintainer: [Juliet](https://github.com/NJCsih)
-* Hardware Supported: ATmega24U arduino pro micro, choc switches, custom pcb
-* Hardware Availability: Pro micro at your discretion, boards are not mass produced.
+## Assembly
 
-Pretty sure I've lost the pcb files due to a hard drive failure lol \:cries\:
+There is only one known hardware issue: The TRRS jack was placed inset to the pcb, which prevents my TRRS cable from being connected. I filed through the pcb to allow room for the connection. Filing through fiberglass is not exactly fun--I did it with the corner of the board submerged in water, and superglued over the exposed edge. Do not worry about shorting the copper planes together, as both are ground.
+
+I prefer clipping through-hole pins to less than the pcb-width, giving a flush solder joint. However the hot-swap mounts are sharp enough to catch a deskmat, so this is less important on MK4.
 
 ## Flashing:
 
-I just flash with qmk on the unix command line with:
+For the Elite-Pi microcontroller, plug in one board at a time, and run the following command to start compilation. Once it is waiting for a board, double press the boot dimple button on the Elite-Pi, and mount with dolphin.
 
 ```bash
 # Plug in left side
-qmk flash -kb ngc224 -km default -c -bl avrdude-split-left
+qmk flash -kb ngc224 -km default -c -bl uf2-split-left
 
 # Plug in right side
-qmk flash -kb ngc224 -km default -c -bl avrdude-split-right
+qmk flash -kb ngc224 -km default -c -bl uf2-split-right
 ```
 
-This handles the eeprom flashing as well, and works with the atmega24U chips.
+## Layouts:
+"One does not simply share his emacs configuration, this is all personalized to my quirks and misdemeanors"
 
-I'd like to include a nix flake for the qmk versioning soon, mostly just so that if they fully-depricate c-style configuration in favor of info.json I can just... ignore it forever.
+I use [Colemak-DH](https://colemakmods.github.io/mod-dh/), chosen due to hand pain issues to minimize finger travel, especially with less usage of the center columns
 
-## Layout:
+## BOM:
+- 1-each: left and right PCBs
+	- As an american I spend \$40 to ship and import a \$9 JLC
+- 36: Kailh choc hot-swap mounts
+- 36: Kailh choc switches
+- 72: through-hole 1N4148 Diodes
+- 2: TRRS connectrs
+- 1: TRRS cable
 
-The layout I use is based on the colemak-dh layout, everything except the letters is custom.
-
-I've gone down to 34 buttons, so there's just kinda 14 extra ones hanging out on my keyboard now :p
-
-I do use homerow mods now. From center out they go ctrl, shift, alt, super. The outer thumb buttons are escape and enter when tapped, and num and fn layers when held.
-
-Current "default" layout:
-![layout](https://github.com/NJCsih/NGC224/blob/main/layout.png?raw=true)
-
-
-## The future:
-
-I would like to do a v2, which would introduce hotswappable switch mounts, and not feature a broken I2C connection, which has been patched by desoldering the resistors and using serial instead.
-
-I do need to actually print the keycaps, I'll add a photo or two once I do.
+## Credits:
+- Kicad footprints are from [joe-scotto/scottokeebs](https://github.com/joe-scotto/scottokeebs)
